@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <PreloadImage :imgArr="imgArr" />
+    <Hello msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Hello from '@/components/Hello.vue'
+import PreloadImage from '@/components/Loading.vue'
+import imgList from '@/components/imageList'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      imgArr: imgList
+    }
+  },
   components: {
-    HelloWorld
+    Hello,
+    PreloadImage
   }
 }
 </script>
