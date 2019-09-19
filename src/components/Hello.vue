@@ -15,16 +15,19 @@
       </section>
     </article>
     <router-link to="/about" class="button">下一页</router-link>
+    <Copyright />
   </main>
 </template>
 
 <script>
+import Copyright from '../components/Copyright'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   components: {
+    Copyright
   }
 }
 </script>
