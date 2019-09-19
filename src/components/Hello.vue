@@ -10,11 +10,18 @@
           <p>活动时间：9月23日-10月8日</p>
           <h3>活动规则：</h3>
           <p>想成为一名保护野生动物的探险家，就要通过寻找线索，点亮图腾。成功收集五个动物图腾的用户，可参与抽奖。中奖用户请留下详细信息，工作人员将于活动结束后三个工作日内与您联系。</p>
-          <p>本次活动解释权归主办方所有</p>
+          <h3>合作机构</h3>
+          <ul class="logos">
+            <li><img src="../assets/images/logo/sjdwxh.png" alt="世界动物协会" /></li>
+            <li><img src="../assets/images/logo/dzrxh.png" alt="大自然保护协会" /></li>
+            <li><img src="../assets/images/logo/dxmjd.png" alt="成都大熊猫基地" /></li>
+            <li><img src="../assets/images/logo/bhgjjjh.png" alt="保护国际基金会" /></li>
+          </ul>
+          <p class="disclaimer">本次活动解释权归主办方所有</p>
         </div>
       </section>
     </article>
-    <router-link to="/about" class="button">下一页</router-link>
+    <router-link to="/question" class="button">下一页</router-link>
     <Copyright />
   </main>
 </template>
@@ -57,10 +64,13 @@ export default {
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2) inset;
  }
  h3 {
-   margin: 1.5rem auto .8rem;
+   margin: 3.5rem auto .8rem;
    font-size: 2rem;
    font-weight: bold;
    color: #262624;
+   &:first-child {
+     margin-top: 1.5rem;
+   }
  }
  .content {
    box-sizing: border-box;
@@ -71,11 +81,27 @@ export default {
    text-align: left;
    color: #46433F;
    p {
-     margin: .5rem 0 1.5rem;
+     margin-top: .5rem;
+     margin-bottom: 1.5rem;
    }
    strong {
     color: #1a6825
   }
+ }
+ .disclaimer {
+   margin-left: 1rem;
+   font-size: 1rem;
+ }
+ .logos {
+   display: grid;
+   grid-template-columns: 1fr 2fr;
+   margin: 0;
+   padding: 1.5rem;
+   list-style: none;
+   grid-gap: 1.5rem;
+   img {
+     max-width: 100%;
+   }
  }
  .button {
    position: absolute;
