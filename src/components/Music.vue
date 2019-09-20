@@ -1,30 +1,49 @@
 <template>
   <div class="music-box">
-    <div @click="changeOn" :class="isOff?'isOff':'isOn'"></div>
-    <audio id="audio" :src="require('../assets/mp3/bg-music.mp3')"></audio>
+    <div @click="changeOn" :class="isOff ? 'isOff':'isOn'"></div>
+    <audio id="audio" :src="musics[name] || musics.bgMusic" :autoplay="!isOff"></audio>
   </div>
 </template>
 <script>
+import m0 from '@/assets/mp3/bg-music.mp3'
+import m1 from '@/assets/mp3/parrot.mp3'
+import m2 from '@/assets/mp3/chainsaw.mp3'
+import m3 from '@/assets/mp3/cage.mp3'
+import m4 from '@/assets/mp3/drink.mp3'
+import m5 from '@/assets/mp3/leopard.mp3'
+const musics = {
+  'bgMusic': m0,
+  'parrot': m1,
+  'chainsaw': m2,
+  'cage': m3,
+  'drink': m4,
+  'leopard': m5
+}
 export default {
+  props: {
+    autoPlay: Boolean,
+    name: String
+  },
   data () {
     return {
-      isOff: true
+      isOff: true,
+      musics
     }
   },
   components: {},
-  created () {},
   mounted () {
-    document.addEventListener('touchstart', this.audioAutoPlay, false)
-    document.addEventListener('WeixinJSBridgeReady', this.audioAutoPlay, false)
-    let oAudio = document.querySelector('#audio')
+    const oAudio = document.querySelector('#audio')
     oAudio.onended = function () {
       oAudio.load()
       oAudio.play()
     }
+    if (this.autoPlay) {
+      this.audioAutoPlay()
+    }
   },
   methods: {
     changeOn () {
-      let oAudio = document.querySelector('#audio')
+      const oAudio = document.querySelector('#audio')
       if (this.isOff) {
         oAudio.play()
       } else {
@@ -33,10 +52,9 @@ export default {
       this.isOff = !this.isOff
     },
     audioAutoPlay () {
-      let audio = document.getElementById('audio')
+      const audio = document.getElementById('audio')
       this.isOff = false
       audio.play()
-      document.removeEventListener('touchstart', this.audioAutoPlay)
     }
   }
 }

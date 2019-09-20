@@ -19,7 +19,43 @@ export default new Router({
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "question" */ './views/Question.vue')
-  }
-  ]
+      import(/* webpackChunkName: "question" */ './views/Question.vue'),
+    children: [
+      {
+        path: 'step1',
+        component: () =>
+          import(/* webpackChunkName: "step1" */ './components/steps/Step1.vue')
+      },
+      {
+        path: 'step2',
+        component: () =>
+          import(/* webpackChunkName: "step2" */ './components/steps/Step2.vue')
+      },
+      {
+        path: 'step3',
+        component: () =>
+          import(/* webpackChunkName: "step3" */ './components/steps/Step3.vue')
+      },
+      {
+        path: 'step4',
+        component: () =>
+          import(/* webpackChunkName: "step4" */ './components/steps/Step4.vue')
+      },
+      {
+        path: 'step5',
+        component: () =>
+          import(/* webpackChunkName: "step5" */ './components/steps/Step5.vue')
+      },
+      {
+        path: 'step6',
+        component: () =>
+          import(/* webpackChunkName: "step6" */ './components/steps/Step6.vue')
+      },
+      {
+        path: 'step7',
+        component: () =>
+          import(/* webpackChunkName: "step7" */ './components/steps/Step7.vue')
+      }
+    ]
+  }]
 })

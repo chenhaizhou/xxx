@@ -1,84 +1,79 @@
 <template>
   <main>
-    <div class="content-box">
-      <AnimalIcons />
-      <Question1 />
-    </div>
+    <router-view></router-view>
     <Copyright />
   </main>
 </template>
 
 <script>
 import Copyright from '../components/Copyright'
-import AnimalIcons from '../components/AnimalIcons'
-import Question1 from '../components/Question1'
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      active: 0,
+      step: 1
+    }
+  },
+  methods: {
   },
   components: {
-    Copyright,
-    AnimalIcons,
-    Question1
+    Copyright
+  },
+  mounted () {
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
  main {
    overflow: hidden;
    background-image: url(../assets/images/bg/bg2.png);
  }
- article {
-   box-sizing: border-box;
+ .content-box {
    overflow: hidden;
-   width: 80vw;
-   height: 60vh;
-   padding: 3px;
-   margin: 15vh auto auto;
-   background-color: #E9DFCF;
-   border: 5px solid #42332F;
-   border-radius: 10px;
  }
- section {
-  box-sizing: border-box;
-  height: 100%;
-  border: 3px solid #938673;
-  border-radius: 5px;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2) inset;
- }
- h3 {
-   margin: 1.5rem auto .8rem;
-   font-size: 2rem;
-   font-weight: bold;
-   color: #262624;
- }
- .content {
-   box-sizing: border-box;
-   height: 100%;
-   padding: 1rem;
-   font-size: 1.6rem;
-   overflow: auto;
-   text-align: left;
-   color: #46433F;
-   p {
-     margin: .5rem 0 1.5rem;
-   }
-   strong {
-    color: #1a6825
+ .question-box {
+    position: relative;
+    z-index: 1;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #42332F;
+    background-color: rgba(255, 255, 255, .7);
+    font-size: 1.8rem;
+    outline: 5px solid #4e3934;
+    font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;
+    p {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
   }
- }
- .button {
-   position: absolute;
-   top: 70vh;
-   right: 5vw;
-   width: 160px;
-   height: 166px;
-   background-size: contain;
-   background-image: url(../assets/images/bag.png);
-   background-repeat: no-repeat;
-   text-indent: -99em;
- }
+  .arrow {
+    margin-left: 5px;
+    vertical-align: middle;
+    border-width: 8px 5px 0 5px;
+    border-style: solid;
+    line-height: 0;
+    font-size: 0;
+    border-color: #171A12 transparent transparent transparent;
+  }
+  .mask {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
 </style>

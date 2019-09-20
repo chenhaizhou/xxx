@@ -5,6 +5,13 @@
 </template>
 
 <style lang="scss">
+@font-face {
+  font-family: 'FZZhengHei-B-GBK';
+  src: url('./assets/font/FZZCHK--GBK1-0.woff2') format('woff2'),
+      url('./assets/font/FZZCHK--GBK1-0.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   font-size: 62.5%;
 }
@@ -16,7 +23,6 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 #nav {
@@ -35,5 +41,8 @@ main {
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+}
+h1, h2, h3, h4 ,h5, h6 {
+  font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;
 }
 </style>
