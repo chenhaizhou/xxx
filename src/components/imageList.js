@@ -38,7 +38,25 @@ import logo1 from '../assets/images/logo/bhgjjjh.png'
 import logo2 from '../assets/images/logo/dxmjd.png'
 import logo3 from '../assets/images/logo/dzrxh.png'
 import logo4 from '../assets/images/logo/sjdwxh.png'
+import stripe from '@/assets/images/img/stripe.png'
 
+export {
+  p1,
+  p2,
+  p3,
+  p4,
+  p5,
+  p1q2,
+  p2q2,
+  p3q2,
+  p4q2,
+  p5q2,
+  plume,
+  falcon,
+  food,
+  foot,
+  stripe
+}
 export default [
   bg1,
   bg2,
@@ -79,5 +97,6 @@ export default [
   logo1,
   logo2,
   logo3,
-  logo4
+  logo4,
+  stripe
 ]

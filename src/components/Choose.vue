@@ -1,7 +1,7 @@
 <template>
   <ol>
     <li v-for="item in items" v-bind:key="item">
-      <div class="button" v-on:click="handleSelect(item, $event)">{{item}}</div>
+      <div class="button" v-bind:class="{min: item.length > 4}" v-on:click="handleSelect(item, $event)">{{item}}</div>
     </li>
   </ol>
 </template>
@@ -58,5 +58,15 @@ export default {
     background-repeat: no-repeat;
     padding-left: 30px;
     text-align: center;
+    &.min {
+      padding-top: .8rem;
+      padding-left: 4.5rem;
+      font-size: 1.4rem;
+      line-height: 1;
+      &::before {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
 </style>

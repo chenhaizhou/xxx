@@ -1,24 +1,45 @@
 <template>
-  <main>
+  <main v-bind:style="{backgroundImage: `url(${bg})`}">
     <router-view></router-view>
+    <Music name="bgMusic" :autoPlay="true" />
     <Copyright />
   </main>
 </template>
 
 <script>
-import Copyright from '../components/Copyright'
+import Copyright from '@/components/Copyright'
+import Music from '@/components/Music'
+import bg2 from '../assets/images/bg/bg2.png'
+import bg3 from '../assets/images/bg/bg3.png'
+import bg4 from '../assets/images/bg/bg4.png'
+import bg5 from '../assets/images/bg/bg5.png'
+import bg6 from '../assets/images/bg/bg6.png'
+const bg = {
+  parrot: bg2,
+  monkey: bg3,
+  falcon: bg4,
+  panda: bg5,
+  leopard: bg6
+}
 
 export default {
   data () {
     return {
-      active: 0,
-      step: 1
+      current: this.$route.params.name,
+      bg: bg[this.$route.params.name]
     }
   },
   methods: {
+    updateBg () {
+      this.bg = bg[this.$route.params.name]
+    }
+  },
+  watch: {
+    '$route': 'updateBg'
   },
   components: {
-    Copyright
+    Copyright,
+    Music
   },
   mounted () {
   }
@@ -29,7 +50,6 @@ export default {
 <style lang="scss">
  main {
    overflow: hidden;
-   background-image: url(../assets/images/bg/bg2.png);
  }
  .content-box {
    overflow: hidden;

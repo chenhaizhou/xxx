@@ -1,34 +1,50 @@
 <template>
   <div>
-    <AnimalIcons />
+    <Bg :step="7" :current="current" />
+    <AnimalIcons :step="current" :isLast="isLast" />
     <div class="question-box">
       <p>
-        恭喜你获得金刚鹦鹉图腾~
+        {{describe}}
       </p>
     </div>
-    <div class="parrot on"></div>
-    <router-link to="step7"><NextButton /></router-link>
-    <router-link to="/question">
-      <div class="button-circle">下一站</div>
+    <router-link :to="path"><NextButton /></router-link>
+    <router-link :to="path">
+      <div class="button-circle" v-if="!isLast">下一站</div>
+      <div class="button-circle last" v-else><span>选择<br />守护的动物</span></div>
     </router-link>
-    <Music name="parrot" :autoPlay="true" />
   </div>
 </template>
 <script>
-import Music from '@/components/Music'
+import { steps } from '@/config/config'
 import AnimalIcons from '@/components/AnimalIcons'
 import NextButton from '@/components/NextButton'
+import Bg from '@/components/Bg'
+const describes = {
+  parrot: '恭喜你，获得金刚鹦鹉图腾',
+  monkey: '恭喜你，获得滇金丝猴图腾',
+  falcon: '恭喜你，获得红隼图腾',
+  panda: '恭喜你，获得大熊猫图腾',
+  leopard: '恭喜你，全部图腾已解锁！'
+}
+const getNext = current => {
+  const index = steps.indexOf(current)
+  return steps[index + 1]
+}
 export default {
   data () {
     return {
+      current: this.$route.params.name,
+      path: this.$route.params.name !== steps[steps.length - 1] ? '../step1/' + getNext(this.$route.params.name) : '/card',
+      describe: describes[this.$route.params.name],
       on: false,
-      show: false
+      show: false,
+      isLast: this.$route.params.name === steps[steps.length - 1]
     }
   },
   components: {
-    Music,
     AnimalIcons,
-    NextButton
+    NextButton,
+    Bg
   },
   mounted () {
     this.show = true
@@ -41,21 +57,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .parrot {
-    position: fixed;
-    top: 25vh;
-    right: -15vw;
-    z-index: 0;
-    width: 272px;
-    height: 263px;
-    background-size: contain;
-    background-image: url(../../assets/images/parrot3.png);
-    background-repeat: no-repeat;
-    &.on {
-      background-image: url(../../assets/images/parrot2.png);
-      right: 10vw;
-    }
-  }
   .button-circle {
     position: fixed;
     bottom: 60px;
@@ -94,6 +95,13 @@ export default {
       top: 10%;
       right: -6px;
       transform: rotate(200deg);
+    }
+    &.last {
+      display: flex;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      align-items: center;
+      justify-content: center;
     }
   }
 </style>

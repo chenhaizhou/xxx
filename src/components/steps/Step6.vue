@@ -1,34 +1,43 @@
 <template>
   <div>
-    <AnimalIcons />
+    <Bg :step="6" :current="current" />
+    <AnimalIcons :step="current" />
     <div class="question-box">
       <p>
-        谢谢你救了我！
+        {{describe}}
         <i class="arrow"></i>
       </p>
     </div>
     <transition name="fade" v-on:after-enter="afterEnter">
-      <div class="parrot" v-if="show" v-bind:class="{on: on}"></div>
+      <div class="parrot" v-if="show && current === 'parrot'" v-bind:class="{on: on}"></div>
     </transition>
-    <router-link to="step7"><NextButton /></router-link>
-    <Music name="parrot" :autoPlay="true" />
+    <router-link :to="{path: '../step7/' + current}"><NextButton /></router-link>
   </div>
 </template>
 <script>
-import Music from '@/components/Music'
 import AnimalIcons from '@/components/AnimalIcons'
 import NextButton from '@/components/NextButton'
+import Bg from '@/components/Bg'
+const describes = {
+  parrot: '谢谢你救了我！',
+  monkey: '好棒，伐木停止了，可爱的小猴子们又回来觅食了！',
+  falcon: '谢谢你，可爱的小伙伴，我又重获自由了',
+  panda: '大熊猫，再见啦',
+  leopard: '谢谢你啦，我亲爱的伙伴！'
+}
 export default {
   data () {
     return {
+      current: this.$route.params.name,
+      describe: describes[this.$route.params.name],
       on: false,
       show: false
     }
   },
   components: {
-    Music,
     AnimalIcons,
-    NextButton
+    NextButton,
+    Bg
   },
   mounted () {
     this.show = true

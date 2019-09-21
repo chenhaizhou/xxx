@@ -58,6 +58,7 @@ export default {
   height: 100%;
   background-color: #2978c9;
   z-index: 0;
+  text-align: center;
   color: #fff;
   p {
     margin: 0;

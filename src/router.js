@@ -15,6 +15,7 @@ export default new Router({
   {
     path: '/question',
     name: 'question',
+    redirect: '/question/step1/parrot',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -22,37 +23,37 @@ export default new Router({
       import(/* webpackChunkName: "question" */ './views/Question.vue'),
     children: [
       {
-        path: 'step1',
+        path: 'step1/:name',
         component: () =>
           import(/* webpackChunkName: "step1" */ './components/steps/Step1.vue')
       },
       {
-        path: 'step2',
+        path: 'step2/:name',
         component: () =>
           import(/* webpackChunkName: "step2" */ './components/steps/Step2.vue')
       },
       {
-        path: 'step3',
+        path: 'step3/:name',
         component: () =>
           import(/* webpackChunkName: "step3" */ './components/steps/Step3.vue')
       },
       {
-        path: 'step4',
+        path: 'step4/:name',
         component: () =>
           import(/* webpackChunkName: "step4" */ './components/steps/Step4.vue')
       },
       {
-        path: 'step5',
+        path: 'step5/:name',
         component: () =>
           import(/* webpackChunkName: "step5" */ './components/steps/Step5.vue')
       },
       {
-        path: 'step6',
+        path: 'step6/:name',
         component: () =>
           import(/* webpackChunkName: "step6" */ './components/steps/Step6.vue')
       },
       {
-        path: 'step7',
+        path: 'step7/:name',
         component: () =>
           import(/* webpackChunkName: "step7" */ './components/steps/Step7.vue')
       }

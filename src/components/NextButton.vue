@@ -1,5 +1,5 @@
 <template>
-  <div class="point">
+  <div class="point" v-bind:class="{full: name !== 'parrot'}">
     <RippleIcon v-if="tips" />
     <div class="tips-button">下一页</div>
   </div>
@@ -8,7 +8,8 @@
 import RippleIcon from '@/components/RippleIcon'
 export default {
   props: {
-    tips: Boolean
+    tips: Boolean,
+    name: String
   },
   components: {
     RippleIcon
@@ -23,6 +24,19 @@ export default {
     z-index: 1;
     width: 95px;
     height: 53px;
+    &.full {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      .tips-button {
+        display: none;
+      }
+      .ripple {
+        left: 50%;
+        top: 60%;
+      }
+    }
   }
   .tips-button {
     height: 100%;
@@ -30,7 +44,7 @@ export default {
     text-indent: -99em;
     overflow: hidden;
     background-size: contain;
-    background-image: url(../assets/images/plume.png);
+    background-image: url(../assets/images/img/plume.png);
     background-repeat: no-repeat;
   }
 </style>

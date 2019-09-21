@@ -14,9 +14,9 @@ import m5 from '@/assets/mp3/leopard.mp3'
 const musics = {
   'bgMusic': m0,
   'parrot': m1,
-  'chainsaw': m2,
-  'cage': m3,
-  'drink': m4,
+  'monkey': m2,
+  'falocn': m3,
+  'panda': m4,
   'leopard': m5
 }
 export default {
@@ -64,7 +64,7 @@ export default {
   position: fixed;
   bottom: 2.5rem;
   right: 2rem;
-  z-index: 0;
+  z-index: 9;
 }
 .isOn {
   width: 28px;

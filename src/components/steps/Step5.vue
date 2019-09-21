@@ -1,32 +1,41 @@
 <template>
   <div>
-    <AnimalIcons />
+    <Bg :step="5" :current="current" />
+    <AnimalIcons :step="current" />
     <div class="question-box">
       <p>
-        快点击解救金刚鹦鹉吧
+        {{describe}}
         <i class="arrow"></i>
       </p>
     </div>
-    <router-link to="step6"><div class="parrot"><RippleIcon left="60px" /></div></router-link>
-    <router-link to="step6"><NextButton /></router-link>
-    <Music name="parrot" :autoPlay="true" />
+    <router-link :to="{path: '../step6/' + current}"><div class="parrot" v-if="current === 'parrot'"><RippleIcon left="60px" /></div></router-link>
+    <router-link :to="{path: '../step6/' + current}"><NextButton /></router-link>
   </div>
 </template>
 <script>
-import Music from '@/components/Music'
 import AnimalIcons from '@/components/AnimalIcons'
 import NextButton from '@/components/NextButton'
 import RippleIcon from '@/components/RippleIcon'
+import Bg from '@/components/Bg'
+const describes = {
+  parrot: '快点击解救金刚鹦鹉吧',
+  monkey: '快出手阻止违规伐木！',
+  falcon: '快点打开铁网，把它放出来吧！',
+  panda: '它初次见人常用前掌蒙面或把头低下。我们别去打扰它啦',
+  leopard: '快打开捕兽夹，把小雪豹解救出来吧'
+}
 export default {
   data () {
     return {
+      current: this.$route.params.name,
+      describe: describes[this.$route.params.name]
     }
   },
   components: {
-    Music,
     AnimalIcons,
     NextButton,
-    RippleIcon
+    RippleIcon,
+    Bg
   },
   mounted () {
   }
