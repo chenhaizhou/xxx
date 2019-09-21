@@ -1,19 +1,14 @@
 <template>
-  <main v-bind:style="{backgroundImage: `url(${bg})`}">
+  <div class="wrapper" v-bind:style="{backgroundImage: `url(${bg})`}">
     <router-view></router-view>
-    <Music name="bgMusic" :autoPlay="true" />
-    <Copyright />
-  </main>
+  </div>
 </template>
-
 <script>
-import Copyright from '@/components/Copyright'
-import Music from '@/components/Music'
-import bg2 from '../assets/images/bg/bg2.png'
-import bg3 from '../assets/images/bg/bg3.png'
-import bg4 from '../assets/images/bg/bg4.png'
-import bg5 from '../assets/images/bg/bg5.png'
-import bg6 from '../assets/images/bg/bg6.png'
+import bg2 from '@/assets/images/bg/bg2.png'
+import bg3 from '@/assets/images/bg/bg3.png'
+import bg4 from '@/assets/images/bg/bg4.png'
+import bg5 from '@/assets/images/bg/bg5.png'
+import bg6 from '@/assets/images/bg/bg6.png'
 const bg = {
   parrot: bg2,
   monkey: bg3,
@@ -21,7 +16,6 @@ const bg = {
   panda: bg5,
   leopard: bg6
 }
-
 export default {
   data () {
     return {
@@ -38,42 +32,17 @@ export default {
     '$route': 'updateBg'
   },
   components: {
-    Copyright,
-    Music
   },
   mounted () {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
- main {
-   overflow: hidden;
- }
- .content-box {
-   overflow: hidden;
- }
- .question-box {
-    position: relative;
-    z-index: 1;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 5rem;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border: 1px solid #42332F;
-    background-color: rgba(255, 255, 255, .7);
-    font-size: 1.8rem;
-    outline: 5px solid #4e3934;
-    font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;
-    p {
-      padding: 0;
-      margin: 0;
-      text-align: center;
-    }
+  .wrapper {
+    overflow: hidden;
+  }
+  .content-box {
+    overflow: hidden;
   }
   .arrow {
     margin-left: 5px;

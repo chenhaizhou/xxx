@@ -12,7 +12,7 @@
     background-image: url(../assets/images/logo.png);
     background-repeat: no-repeat;
     text-indent: -99em;
-    z-index: 0;
+    z-index: 9;
     bottom: 25px;
     left: 20px;
   }

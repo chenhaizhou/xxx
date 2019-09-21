@@ -21,7 +21,7 @@
         </div>
       </section>
     </article>
-    <router-link to="/question" class="button">下一页</router-link>
+    <router-link to="/main/question" class="button">下一页</router-link>
     <Copyright />
   </main>
 </template>
@@ -29,7 +29,7 @@
 <script>
 import Copyright from '../components/Copyright'
 export default {
-  name: 'HelloWorld',
+  name: 'Hello',
   props: {
     msg: String
   },
