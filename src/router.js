@@ -64,8 +64,15 @@ export default new Router({
       },
       {
         path: 'card',
+        name: 'card',
         component: () =>
           import(/* webpackChunkName: "card" */ './views/Card.vue')
+      },
+      {
+        path: 'result/:name',
+        name: 'result',
+        component: () =>
+          import(/* webpackChunkName: "result" */ './views/Result.vue')
       }
     ]
   }

@@ -1,4 +1,4 @@
-# zoom2
+# Animals
 
 ## Project setup
 ```
@@ -24,3 +24,13 @@ yarn run test
 ```
 yarn run lint
 ```
+
+## Request API
+1. User Card
+
+   ./src/components/CardBox.vue
+
+
+2. Submit Form
+
+   ./src/components/Result.vue

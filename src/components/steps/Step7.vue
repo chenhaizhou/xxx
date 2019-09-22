@@ -34,7 +34,7 @@ export default {
   data () {
     return {
       current: this.$route.params.name,
-      path: this.$route.params.name !== steps[steps.length - 1] ? '../step1/' + getNext(this.$route.params.name) : '/card',
+      path: this.$route.params.name !== steps[steps.length - 1] ? '../step1/' + getNext(this.$route.params.name) : '/main/card',
       describe: describes[this.$route.params.name],
       on: false,
       show: false,
@@ -57,51 +57,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .button-circle {
-    position: fixed;
-    bottom: 60px;
-    left: 50%;
-    display: block;
-    width: 100px;
-    height: 100px;
-    transform: translateX(-50%);
-    line-height: 100px;
-    text-align: center;
-    font-size: 2.6rem;
-    font-weight: bold;
-    color: #fff;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    z-index: 1;
-    box-shadow: 0 0 10px 5px #159588 inset, 0 0 3px 3px #159588;
-    background-color: rgba(0, 0, 0, .5);
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      z-index: 0;
-      display: block;
-      width: 0;
-      height: 0;
-      border-width: 14px 14px 14px 0;
-      border-style: solid;
-      border-color: #fff transparent transparent transparent;
-    }
-    &::before {
-      left: 0;
-      top: 75%;
-      transform: rotate(15deg);
-    }
-    &::after {
-      top: 10%;
-      right: -6px;
-      transform: rotate(200deg);
-    }
-    &.last {
-      display: flex;
-      font-size: 1.8rem;
-      line-height: 1.2;
-      align-items: center;
-      justify-content: center;
-    }
-  }
+  
 </style>

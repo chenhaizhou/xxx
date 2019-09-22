@@ -15,7 +15,7 @@
           </div>
           <p class="describe" v-html="animals[name].describe"></p>
           <footer>
-            <router-link to="/main/result" class="button-chest">
+            <router-link :to="'/main/result/' + name" class="button-chest">
               点击打开宝箱
             </router-link>
             <div class="qr-code">
@@ -29,6 +29,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 import {
   parrot,
   monkey,
@@ -76,13 +77,24 @@ export default {
         }
       },
       on: false,
-      username: '孙运明',
-      count: 12102
+      username: '',
+      count: 0
     }
   },
   methods: {
     handleClick () {
-      this.on = true
+      this.on = true // remove this line when enable axios
+      this.username = '孙运明' // remove this line when enable axios
+      this.count = 12102 // remove this line when enable axios
+      /*
+      axios.post('/api', this.formObj).then(res => {
+        this.on = true
+        this.username = res.username
+        this.count = res.count
+      }).catch(err => {
+        console.error('Error:', err)
+      });
+      */
     }
   }
 }
