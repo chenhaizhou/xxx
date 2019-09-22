@@ -24,7 +24,7 @@ const describes = {
   monkey: '滇金丝猴为什么会丢掉美味跑掉呢？滋滋滋…滋滋滋…怎么会有这么刺耳的声音',
   falcon: '哗哗哗…哗哗哗…这怎么有个铁网在晃动？',
   panda: '这是什么声音？',
-  leopard: '这是雪豹的叫声，发生什么事情了？'
+  leopard: '这是雪豹的叫声，<br />发生什么事情了？'
 }
 export default {
   data () {
@@ -41,5 +41,5 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 </style>

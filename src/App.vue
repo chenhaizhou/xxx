@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div style="display:none"><img src='./assets/images/logo2.png' /></div>
     <router-view/>
   </div>
 </template>
@@ -47,11 +48,11 @@
     justify-content: center;
     min-height: 5rem;
     margin: 2rem auto;
-    padding: 1.5rem;
+    padding: 1.5rem 3rem;
     border: 1px solid #42332F;
     background-color: rgba(255, 255, 255, .7);
     font-size: 1.8rem;
-    outline: 5px solid #4e3934;
+    outline: 3px solid #4e3934;
     font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;
     p {
       padding: 0;

@@ -69,8 +69,8 @@ export default {
     handleShowForm () {
       this.showForm = !this.showForm
     },
-    submitForm(event) {
-      event.preventDefault();
+    submitForm (event) {
+      event.preventDefault()
       this.showForm = false // remove this line when enable axios
       this.submitStatus = true // remove this line when enable axios
       /*
@@ -79,7 +79,7 @@ export default {
         this.submitStatus = true
       }).catch(err => {
         console.error('Error:', err)
-      });
+      })
       */
     }
   },

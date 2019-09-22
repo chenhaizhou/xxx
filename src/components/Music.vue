@@ -1,7 +1,7 @@
 <template>
-  <div class="music-box">
-    <div @click="changeOn" :class="isOff ? 'isOff':'isOn'"></div>
-    <audio id="audio" :src="musics[name] || musics.bgMusic" :autoplay="!isOff"></audio>
+  <div class="music-box" @click="bgMusicPlayOrPause('bgMusic')">
+    <audio id="bgMusic" :src="musics[name] || musics.bgMusic" :autoplay="!playFlag" preload="auto" loop></audio>
+    <div :class="!playFlag ? 'isOff':'isOn'"></div>
   </div>
 </template>
 <script>
@@ -15,7 +15,7 @@ const musics = {
   'bgMusic': m0,
   'parrot': m1,
   'monkey': m2,
-  'falocn': m3,
+  'falcon': m3,
   'panda': m4,
   'leopard': m5
 }
@@ -26,35 +26,78 @@ export default {
   },
   data () {
     return {
-      isOff: true,
+      playFlag: true,
+      clickMusicBtn: false,
       musics
     }
   },
-  components: {},
   mounted () {
-    const oAudio = document.querySelector('#audio')
-    oAudio.onended = function () {
-      oAudio.load()
-      oAudio.play()
-    }
-    if (this.autoPlay) {
-      this.audioAutoPlay()
-    }
+    this.audioAutoPlay('bgMusic')
+    document.addEventListener('visibilitychange', (e) => { // 兼容ios微信手Q
+      if (this.clickMusicBtn) { // 点击了关闭音乐按钮
+        if (this.playFlag) {
+          this.audioAutoPlay('bgMusic')
+          this.playFlag = true
+        } else {
+          this.audioPause('bgMusic')
+          this.playFlag = false
+        }
+        if (e.hidden) {
+          this.audioAutoPlay('bgMusic')
+          this.playFlag = true
+        } else { // 网页被呼起
+          this.audioPause('bgMusic')
+          this.playFlag = false
+        }
+      } else { // 未点击关闭音乐按钮
+        if (this.playFlag) {
+          this.audioPause('bgMusic')
+          this.playFlag = false
+        } else {
+          this.audioAutoPlay('bgMusic')
+          this.playFlag = true
+        }
+        if (e.hidden) {
+          this.audioPause('bgMusic')
+          this.playFlag = false
+        } else { // 网页被呼起
+          this.audioAutoPlay('bgMusic')
+          this.playFlag = true
+        }
+      }
+    })
+    console.log('---->', this.name)
   },
   methods: {
-    changeOn () {
-      const oAudio = document.querySelector('#audio')
-      if (this.isOff) {
-        oAudio.play()
+    bgMusicPlayOrPause (id) {
+      this.clickMusicBtn = !this.clickMusicBtn
+      if (this.playFlag) {
+        this.audioPause(id)
+        this.playFlag = false
       } else {
-        oAudio.pause()
+        this.audioAutoPlay(id)
+        this.playFlag = true
       }
-      this.isOff = !this.isOff
     },
-    audioAutoPlay () {
-      const audio = document.getElementById('audio')
-      this.isOff = false
+    audioPause (id) {
+      const audio = document.getElementById(id)
+      audio.pause()
+      document.addEventListener('WeixinJSBridgeReady', function () {
+        audio.pause()
+      }, false)
+      document.addEventListener('YixinJSBridgeReady', function () {
+        audio.pause()
+      }, false)
+    },
+    audioAutoPlay (id) {
+      const audio = document.getElementById(id)
       audio.play()
+      document.addEventListener('WeixinJSBridgeReady', function () {
+        audio.play()
+      }, false)
+      document.addEventListener('YixinJSBridgeReady', function () {
+        audio.play()
+      }, false)
     }
   }
 }

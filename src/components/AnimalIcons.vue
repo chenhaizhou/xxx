@@ -39,7 +39,7 @@
         </g>
       </svg>
     </li>
-    <li v-bind:class="{active: step === 'leopard' && isLast}">
+    <li v-bind:class="{active: isActive('leopard')}">
       <svg width="67px" height="50px" viewBox="0 0 67 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g transform="translate(-589.000000, -91.000000)" fill="#FFFFFF">
@@ -52,11 +52,14 @@
 </template>
 <script>
 import { steps } from '@/config/config'
-const getActiveList = step => {
+const getActiveList = (step, isLast) => {
   if (!step) {
     return []
   }
-  const index = steps.indexOf(step)
+  let index = steps.indexOf(step)
+  if (isLast) {
+    index = index + 1
+  }
   const active = steps.slice(0, index)
   return active
 }
@@ -65,7 +68,10 @@ export default {
   name: 'animalIcons',
   props: {
     step: String,
-    isLast: Boolean
+    isLast: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
@@ -73,7 +79,7 @@ export default {
   },
   methods: {
     isActive (step) {
-      return getActiveList(this.step).indexOf(step) !== -1
+      return getActiveList(this.step, this.isLast).indexOf(step) !== -1
     }
   },
   mounted () {
@@ -98,6 +104,7 @@ export default {
       svg {
         g {
           stroke: #00FEF8;
+          stroke-width: 2px;
         }
       }
     }

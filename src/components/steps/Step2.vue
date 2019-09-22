@@ -14,7 +14,7 @@
     <router-link :to="{path: '../step2/' + current}" v-bind:style="{pointerEvents: 'none'}"><NextButton /></router-link>
     <Modal :show="showModal">
       <Panel>
-        <div class="img">
+        <div class="img full-img">
           <img :src="describes[current].describe.img" />
         </div>
         <h4 class="result success" v-show="status">答对了--{{describes[current].answer}}</h4>
@@ -52,7 +52,7 @@ import {
 const describes = {
   parrot: {
     question: {
-      text: '你找到的这只蓝色的羽毛又大又美，你知道它的主人是谁吗？',
+      text: '你找到的这对儿蓝色羽毛又大又美，你知道它的主人是谁吗？',
       img: plume
     },
     describe: {
@@ -83,7 +83,7 @@ const describes = {
       text: '红隼常栖于山地森林、低山丘陵、旷野、村庄等。飞翔时两个翅膀会快速扇动，悬停于空中观察，发现猎物后折翅俯冲直扑地面目标。红隼的窝种类多样，但是很简陋，有时会侵占鸦、鹊或鹰的巢。',
       img: p3q2
     },
-    answerArr: ['喜鹊', '高山秃鹫', '红隼', '红胸黑雁'],
+    answerArr: ['喜鹊', '高山兀鹫', '红隼', '红胸黑雁'],
     answer: '红隼'
   },
   panda: {
@@ -95,7 +95,7 @@ const describes = {
       text: '大熊猫是世界上最可爱的动物之一，它有着圆圆的脸颊，大大的黑眼圈，胖嘟嘟的身体，标志性的内八字行走方式，也有解剖刀般锋利的爪子。大熊猫已在地球上生存了至少800万年，被誉为“活化石”和“中国国宝”。大熊猫在很久很久以前是吃肉的哦，经过进化，现在的大熊猫99％的食物都是竹子了。',
       img: p4q2
     },
-    answerArr: ['斑马', '大熊猫', '黑熊', '莫不得是个人行道吧'],
+    answerArr: ['斑马', '大熊猫', '黑熊', '人行道'],
     answer: '大熊猫'
   },
   leopard: {
@@ -162,6 +162,13 @@ export default {
       img {
         max-width: 100%;
         max-height: 60%;
+      }
+    }
+    &.full-img {
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
       }
     }
     img {

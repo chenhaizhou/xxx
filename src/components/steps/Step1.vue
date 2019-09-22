@@ -9,7 +9,7 @@
     </div>
     <router-link :to="{path: '../step2/' + current}">
       <NextButton v-if="current === 'parrot'" :tips="true" name="parrot" />
-      <NextButton v-else :tips="true" />
+      <NextButton v-else />
     </router-link>
   </div>
 </template>
@@ -18,7 +18,7 @@ import AnimalIcons from '@/components/AnimalIcons'
 import NextButton from '@/components/NextButton'
 import Bg from '@/components/Bg'
 const describes = {
-  parrot: '南美洲的热带雨林里隐藏着一种色彩艳丽的鸟，试着找到它......',
+  parrot: '南美洲的热带雨林里，隐藏着一种色彩艳丽的鸟，试着找到它......',
   monkey: '咦，有身影闪过，在草丛里留下了什么东西？快捡起来看看~',
   falcon: '看，远处有什么东西飞过来了！',
   panda: '竹林在晃动，里边有个穿黑白T恤的家伙呢',

@@ -89,7 +89,7 @@ export default {
   .chainsaw {
     position: absolute;
     left:18%;
-    top: 35%;
+    top: 40%;
     width: 50%;
     height: 20vw;
     z-index: 0;

@@ -45,6 +45,9 @@ export default {
     overflow: hidden;
   }
   .arrow {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 2.5rem;
     margin-left: 5px;
     vertical-align: middle;
     border-width: 8px 5px 0 5px;
