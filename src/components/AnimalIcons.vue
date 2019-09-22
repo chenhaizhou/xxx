@@ -91,7 +91,7 @@ export default {
     display: grid;
     position: relative;
     margin: 0;
-    margin-top: 4rem;
+    margin-top: 3rem;
     padding: 1.5rem 3rem;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1.5rem;

@@ -8,14 +8,14 @@
         <i class="arrow"></i>
       </p>
     </div>
-    <router-link :to="{path: '../step4/' + current}"><NextButton :tips="true" /></router-link>
+    <router-link :to="{path: '../step4/' + current}"><NextButton /></router-link>
     <div v-bind:style="{pointerEvents: 'none', opacity: 0}">
-      <Music :name="current" :autoPlay="true" />
+      <Music id="scene" :name="current" :autoPlay="true" />
     </div>
   </div>
 </template>
 <script>
-import Music from '@/components/Music'
+import Music from '@/components/Music2'
 import AnimalIcons from '@/components/AnimalIcons'
 import NextButton from '@/components/NextButton'
 import Bg from '@/components/Bg'
@@ -41,5 +41,5 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

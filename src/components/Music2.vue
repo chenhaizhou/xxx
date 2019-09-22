@@ -1,7 +1,7 @@
 <template>
   <div class="music-box">
     <div @click="changeOn" :class="isOff ? 'isOff':'isOn'"></div>
-    <audio id="audio" :src="musics[name] || musics.bgMusic" :autoplay="!isOff"></audio>
+    <audio id="sence" :src="musics[name] || musics.bgMusic" :autoplay="!isOff"></audio>
   </div>
 </template>
 <script>
@@ -35,13 +35,13 @@ export default {
     this.audioAutoPlay()
     document.addEventListener('touchstart', this.audioAutoPlay, false)
     document.addEventListener('WeixinJSBridgeReady', this.audioAutoPlay, false)
-    const oAudio = document.querySelector('#audio')
+    const oAudio = document.querySelector('#sence')
     oAudio.onended = function () {
       oAudio.load()
       oAudio.play()
     }
     document.addEventListener('visibilitychange', function () {
-      const oAudio = document.querySelector('audio')
+      const oAudio = document.querySelector('sence')
       if (document.hidden) {
         oAudio.pause()
       } else {
@@ -51,19 +51,16 @@ export default {
   },
   methods: {
     changeOn () {
-      const oAudio = document.querySelector('#audio')
-      const oAudio2 = document.querySelector('#sence')
+      const oAudio = document.querySelector('#sence')
       if (this.isOff) {
         oAudio.play()
-        oAudio2.play()
       } else {
         oAudio.pause()
-        oAudio2.pause()
       }
       this.isOff = !this.isOff
     },
     audioAutoPlay () {
-      const audio = document.getElementById('audio')
+      const audio = document.getElementById('sence')
       this.isOff = false
       audio.play()
       document.removeEventListener('touchstart', this.audioAutoPlay)
@@ -75,7 +72,7 @@ export default {
 .music-box {
   position: fixed;
   bottom: 2.5rem;
-  right: 2rem;
+  right: 3rem;
   z-index: 9;
 }
 .isOn {

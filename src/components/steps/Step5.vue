@@ -8,8 +8,8 @@
         <i class="arrow"></i>
       </p>
     </div>
-    <router-link :to="{path: '../step6/' + current}"><div class="parrot" v-if="current === 'parrot'"><RippleIcon left="60px" /></div></router-link>
-    <router-link :to="{path: '../step6/' + current}"><NextButton /></router-link>
+    <router-link :to="{path: '../step6/' + current}"><div class="parrot" v-if="current === 'parrot'"></div></router-link>
+    <router-link :to="{path: '../step6/' + current}"><NextButton :tips="true" :position="tipPosition[current]" /></router-link>
   </div>
 </template>
 <script>
@@ -28,13 +28,26 @@ export default {
   data () {
     return {
       current: this.$route.params.name,
-      describe: describes[this.$route.params.name]
+      describe: describes[this.$route.params.name],
+      tipPosition: {
+        parrot: {
+          left: 'auto',
+          right: '30%',
+          top: '50%'
+        },
+        monkey: {
+          top: '45%',
+          left: '40%'
+        },
+        falcon: {
+          top: '75%'
+        }
+      }
     }
   },
   components: {
     AnimalIcons,
     NextButton,
-    RippleIcon,
     Bg
   },
   mounted () {

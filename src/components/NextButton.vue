@@ -1,6 +1,6 @@
 <template>
   <div class="point" v-bind:class="{full: name !== 'parrot'}">
-    <RippleIcon v-if="tips" />
+    <RippleIcon v-if="tips" :style="position" />
     <div class="tips-button">下一页</div>
   </div>
 </template>
@@ -9,7 +9,8 @@ import RippleIcon from '@/components/RippleIcon'
 export default {
   props: {
     tips: Boolean,
-    name: String
+    name: String,
+    position: Object
   },
   components: {
     RippleIcon

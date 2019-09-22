@@ -66,7 +66,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #2978c9;
-  z-index: 9;
+  z-index: 999;
   text-align: center;
   color: #fff;
   p {
@@ -96,7 +96,6 @@ export default {
   }
  .loading-img {
    margin-top: 30vh;
-   margin-bottom: -15px;
    img {
      width: 120px;
      position: relative;

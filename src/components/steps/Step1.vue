@@ -9,7 +9,7 @@
     </div>
     <router-link :to="{path: '../step2/' + current}">
       <NextButton v-if="current === 'parrot'" :tips="true" name="parrot" />
-      <NextButton v-else />
+      <NextButton v-else :tips="!!tipPosition[current]" :position="tipPosition[current]" />
     </router-link>
   </div>
 </template>
@@ -33,7 +33,23 @@ export default {
   data () {
     return {
       current: this.$route.params.name,
-      describe: describes[this.$route.params.name]
+      describe: describes[this.$route.params.name],
+      tipPosition: {
+        monkey: {
+          top: '78%'
+        },
+        falcon: {
+          top: '45%',
+          left: '30%'
+        },
+        panda: {
+          top: '60%',
+          left: '75%'
+        },
+        leopard: {
+          top: '55%'
+        }
+      }
     }
   },
   mounted () {

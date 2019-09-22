@@ -39,7 +39,7 @@ import logo2 from '../assets/images/logo/dxmjd.png'
 import logo3 from '../assets/images/logo/dzrxh.png'
 import logo4 from '../assets/images/logo/sjdwxh.png'
 import stripe from '@/assets/images/img/stripe.png'
-
+import whale from '@/assets/images/whale.gif'
 export {
   p1,
   p2,
@@ -98,5 +98,6 @@ export default [
   logo2,
   logo3,
   logo4,
-  stripe
+  stripe,
+  whale
 ]

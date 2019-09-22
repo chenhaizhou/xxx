@@ -18,7 +18,6 @@ export default {
 <style lang="scss" scoped>
   main {
     overflow: hidden;
-    background-image: url(../assets/images/bg/bg7.png);
   }
   .content-box {
     overflow: hidden;

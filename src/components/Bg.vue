@@ -9,7 +9,7 @@
       <div class="chainsaw" v-if="step > 2 && step < 6"></div>
     </li>
     <li v-if="current === 'falcon'">
-      <div class="cage"></div>
+      <div class="cage" :class="{shake: step === 3}"></div>
       <div class="mouse" v-if="step <= 2"></div>
       <div class="falcon" v-if="step <= 2"></div>
       <div class="falcon falcon2" v-if="step > 5"></div>
@@ -89,7 +89,7 @@ export default {
   .chainsaw {
     position: absolute;
     left:18%;
-    top: 40%;
+    top: 41%;
     width: 50%;
     height: 20vw;
     z-index: 0;
@@ -106,6 +106,9 @@ export default {
     z-index: 0;
     background: url(../assets/images/img/cage.png) center center no-repeat;
     background-size: contain;
+    &.shake {
+      animation: shake 1s ease-in-out 2s infinite;
+    }
   }
   .mouse {
     position: absolute;
@@ -120,7 +123,7 @@ export default {
   }
   .falcon {
     position: absolute;
-    right: 30%;
+    right: 60%;
     top: 40vh;
     width: 20vw;
     height: 20vw;
@@ -129,6 +132,7 @@ export default {
     background-size: contain;
     transform: rotateY(180deg);
     &.falcon2 {
+      right: 30%;
       transform: none;
       width: 40vw;
       height: 40vw;
@@ -170,5 +174,9 @@ export default {
       width: 70vw;
       background-image: url(../assets/images/img/leopard2.png);
     }
+  }
+  @keyframes shake {
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-51%);}
+    20%, 40%, 60%, 80% {transform: translateX(-49%);}
   }
 </style>
