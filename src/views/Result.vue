@@ -16,9 +16,7 @@
       <ResultBox :result="success" :name="name" :submitStatus="submitStatus" />
       <div class="button-circle" v-if="success && !isLast" @click="handleShowForm">填写地址</div>
       <div class="button-group" v-if="isLast">
-        <router-link to="/">
-          <div class="button-circle">再玩一次</div>
-        </router-link>
+        <div class="button-circle" @click="handleReset">再玩一次</div>
         <div class="button-circle" @click="handleMask">{{shareText}}</div>
       </div>
     </div>
@@ -26,7 +24,7 @@
       <p>
         请填写您的相关信息<br />工作人员会与您取得联系并邮寄奖品
       </p>
-      <div v-if="error" class="error">* 所有信息都必须填写！</div>
+      <div v-if="error" class="error">* 所有信息都必须正确填写！</div>
       <ul>
         <li>
           <input type="text" name="username" v-model="formObj.username" placeholder="| 姓名" />
@@ -81,6 +79,9 @@ export default {
     handleShowForm () {
       this.showForm = !this.showForm
     },
+    handleReset () {
+      window.location.href = window.location.href.split('#')[0]
+    },
     submitForm (event) {
       event.preventDefault()
       const data = {
@@ -90,12 +91,21 @@ export default {
         name: this.formObj.username
       }
       
+      const formData = new FormData()
+      formData.append('name', data.name)
+      formData.append('mobile', data.mobile)
+      formData.append('address', data.address)
+      formData.append('code', data.code)
+
+
       if(isValid(data)) {
         this.error = false
-        axios.post(`${host}/animalActivity/ajaxExchangeAward`, data).then(res => {
+        axios.post(`${host}/animalActivity/ajaxExchangeAward`, formData).then(res => {
           if (res.data.data.code === 0) {
             this.showForm = false
             this.submitStatus = true
+          } else {
+            this.error = true
           }
         }).catch(err => {
           console.error('Error:', err)

@@ -6,24 +6,24 @@
     </li>
     <li v-if="current === 'monkey'">
       <div class="food" v-if="step <= 5"></div>
-      <div class="monkey" v-if="step > 5"></div>
-      <div class="chainsaw" v-if="step > 3 && step < 6"></div>
+      <div class="monkey" :class="{'fade-enter': step === 6,'fade-enter-active': delay && step === 6}" v-if="step > 5"></div>
+      <div class="chainsaw" :class="{'fade-enter': step === 4,'fade-enter-active': delay && step === 4}" v-if="step > 3 && step < 6"></div>
     </li>
     <li v-if="current === 'falcon'">
       <div class="cage" :class="{shake: step >= 3 && step < 6}"></div>
       <div class="mouse" v-if="step <= 2"></div>
       <div class="falcon" v-if="step <= 2"></div>
-      <div class="falcon falcon2" v-if="step > 5"></div>
+      <div class="falcon falcon2" :class="{'fade-enter': step === 6,'fade-enter-active': delay && step === 6}" v-if="step > 5"></div>
     </li>
     <li v-if="current === 'panda'">
       <div class="panda" v-if="step <= 3"></div>
-      <div class="panda panda2" v-if="step === 4"></div>
-      <div class="panda panda2 panda3" v-if="step === 5"></div>
-      <div class="panda panda5" v-if="step > 5"></div>
+      <div class="panda panda2 fade-enter" :class="{'fade-enter-active': delay}" v-if="step === 4"></div>
+      <div class="panda panda2 panda3 fade-enter" :class="{'fade-enter-active': delay}" v-if="step === 5"></div>
+      <div class="panda panda5" :class="{'fade-enter': step === 6,'fade-enter-active': delay && step === 6}" v-if="step > 5"></div>
     </li>
     <li v-if="current === 'leopard'">
-      <div class="leopard" v-if="step > 3 && step <= 5"></div>
-      <div class="leopard leopard2" v-if="step > 5"></div>
+      <div class="leopard" :class="{'fade-enter': step === 4,'fade-enter-active': delay && step === 4}" v-if="step > 3 && step <= 5"></div>
+      <div class="leopard leopard2" :class="{'fade-enter': step === 6,'fade-enter-active': delay && step === 6}" v-if="step > 5"></div>
     </li>
   </ul>
 </template>
@@ -32,6 +32,16 @@ export default {
   props: {
     step: Number,
     current: String
+  },
+  data () {
+    return {
+      delay: false
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.delay = true
+    }, 1000)
   }
 }
 </script>
@@ -191,5 +201,12 @@ export default {
   @keyframes shake {
     10%, 30%, 50%, 70%, 90% {transform: translateX(-51%);}
     20%, 40%, 60%, 80% {transform: translateX(-49%);}
+  }
+  div.fade-enter-active, .fade-leave-active {
+    transition: opacity 2s;
+    opacity: 1;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>
