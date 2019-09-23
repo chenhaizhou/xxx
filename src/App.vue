@@ -10,15 +10,14 @@ import { host, share } from '@/config/config'
 import logo from './assets/images/share_logo.jpg'
 export default {
   mounted() {
-    
-    const thisUrl = window.location.href
-    axios.get(`${host}/wx/getWxToken?url=${thisUrl}`,).then((res) => {
+    const thisUrl = encodeURI(window.location.href.split('#')[0])
+    axios.get(`${host}/wx/getWxToken?url=${thisUrl}&wxNum=1`,).then((res) => {
       if (res.status === 200 && res.data && wx) {
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: res.data.data.appId, // 必填，公众号的唯一标识
             timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳
-            nonceStr: res.data.data.noncestr, // 必填，生成签名的随机串
+            nonceStr: res.data.data.nonceStr, // 必填，生成签名的随机串
             signature: res.data.data.signature, // 必填，签名
             jsApiList: [
             "onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareQZone"
@@ -27,13 +26,13 @@ export default {
         // 自定义文案及图片
         const title = share.title
         const link = thisUrl
-        const imgUrl = logo
+        const imgUrl = 'https://h5.kepuchina.cn/html/20190923/' + logo
         const desc = share.desc
         wx.ready(function () {
             wx.onMenuShareTimeline({
                 title: title, // 分享标题
                 link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: host + imgUrl, // 分享图标
+                imgUrl: imgUrl, // 分享图标
                 success: function () {
                     // 用户确认分享后执行的回调函数
                 },
