@@ -5,7 +5,8 @@
     </div>
     <div class="re-item-back">
       <div class="content">
-        <article class="bg-box">
+        <article class="bg-box" ref="imageWrapper">
+          <img class="real_pic" :src="dataURL" />
           <header>
             <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
           </header>
@@ -28,6 +29,7 @@
   </div>
 </template>
 <script>
+import html2canvas from 'html2canvas'
 import axios from 'axios'
 import {
   parrot,
@@ -75,6 +77,7 @@ export default {
           describe: '位于高山的孤独侠客，<br />行踪诡秘的雪山精灵。'
         }
       },
+      dataURL: '',
       on: false,
       username: '',
       count: 0
@@ -86,10 +89,21 @@ export default {
         axios.post('https://h5.kepuchina.cn/wx/auth/').then(res => {
           this.on = true
           this.count = res.data.data.num
+          setTimeout(() => this.handleImage(), 500)
         }).catch(err => {
           console.error('Error:', err)
         });
       }
+    },
+    handleImage () {
+      html2canvas(this.$refs.imageWrapper,{
+          backgroundColor: '#878BA3',
+          width: 300,
+          height: 421
+      }).then((canvas) => {
+          let dataURL = canvas.toDataURL("image/png");
+          this.dataURL = dataURL;
+      })
     }
   }
 }
@@ -239,5 +253,13 @@ export default {
     img {
       max-width: 100%;
     }
+  }
+  .real_pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    z-index: 2;
   }
 </style>
