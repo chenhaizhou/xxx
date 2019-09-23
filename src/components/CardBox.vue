@@ -7,8 +7,7 @@
       <div class="content">
         <article class="bg-box">
           <header>
-            我是 {{username}}
-            <p>是第 {{count}} 位守护{{animals[name].name}}的人</p>
+            <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
           </header>
           <div class="img">
             <img :src="animals[name].img" :alt="animals[name].name" />
@@ -19,7 +18,7 @@
               点击打开宝箱
             </router-link>
             <div class="qr-code">
-              <img src="../assets/images/qr.png" alt="qr code" />
+              <img src="../assets/images/qr.jpg" alt="qr code" />
             </div>
           </footer>
         </article>
@@ -83,18 +82,14 @@ export default {
   },
   methods: {
     handleClick () {
-      this.on = true // remove this line when enable axios
-      this.username = '孙运明' // remove this line when enable axios
-      this.count = 12102 // remove this line when enable axios
-      /*
-      axios.post('/api', this.formObj).then(res => {
-        this.on = true
-        this.username = res.username
-        this.count = res.count
-      }).catch(err => {
-        console.error('Error:', err)
-      });
-      */
+      if(!this.count){
+        axios.post('https://h5.kepuchina.cn/wx/auth/').then(res => {
+          this.on = true
+          this.count = res.data.data.num
+        }).catch(err => {
+          console.error('Error:', err)
+        });
+      }
     }
   }
 }
