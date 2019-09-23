@@ -5,7 +5,7 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
     path: '/',
@@ -70,6 +70,7 @@ export default new Router({
       },
       {
         path: 'result/:name',
+        redirect: 'result/parrot',
         name: 'result',
         component: () =>
           import(/* webpackChunkName: "result" */ './views/Result.vue')
