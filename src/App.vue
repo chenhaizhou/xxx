@@ -10,7 +10,7 @@ import { host, share } from '@/config/config'
 import logo from './assets/images/share_logo.jpg'
 export default {
   mounted() {
-    const thisUrl = encodeURI(window.location.href.split('#')[0])
+    const thisUrl = encodeURIComponent(window.location.href.split('#')[0])
     axios.get(`${host}/wx/getWxToken?url=${thisUrl}&wxNum=1`,).then((res) => {
       if (res.status === 200 && res.data && wx) {
         wx.config({

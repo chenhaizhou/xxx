@@ -23,7 +23,9 @@
             </div>
           </footer>
         </article>
-        <p class="tips">长按图片保存</p>
+        <transition name="fade">
+          <p class="tips" v-if="dataURL">长按图片保存</p>
+        </transition>
       </div>
     </div>
   </div>
@@ -90,7 +92,7 @@ export default {
         axios.post(`${host}/wx/auth/`).then(res => {
           this.on = true
           this.count = res.data.data.num
-          setTimeout(() => this.handleImage(), 500)
+          setTimeout(() => this.handleImage(), 1000)
         }).catch(err => {
           console.error('Error:', err)
         });
@@ -263,5 +265,11 @@ export default {
     height: 360px;
     opacity: 0;
     z-index: 2;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 2s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>

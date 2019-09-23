@@ -96,12 +96,10 @@ export default {
       formData.append('mobile', data.mobile)
       formData.append('address', data.address)
       formData.append('code', data.code)
-
-
       if(isValid(data)) {
         this.error = false
         axios.post(`${host}/animalActivity/ajaxExchangeAward`, formData).then(res => {
-          if (res.data.data.code === 0) {
+          if (res.data.code === 0) {
             this.showForm = false
             this.submitStatus = true
           } else {
