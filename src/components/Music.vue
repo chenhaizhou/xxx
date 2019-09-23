@@ -74,8 +74,8 @@ export default {
 <style lang="scss" scoped>
 .music-box {
   position: fixed;
-  bottom: 2.5rem;
-  right: 2rem;
+  bottom: 25px;
+  right: 20px;
   z-index: 9;
 }
 .isOn {

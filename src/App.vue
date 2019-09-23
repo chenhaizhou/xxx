@@ -6,13 +6,6 @@
 </template>
 
 <style lang="scss">
-  @font-face {
-    font-family: 'FZZhengHei-B-GBK';
-    src: url('./assets/font/FZZCHK--GBK1-0.woff2') format('woff2'),
-        url('./assets/font/FZZCHK--GBK1-0.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
   html {
     font-size: 62.5%;
   }

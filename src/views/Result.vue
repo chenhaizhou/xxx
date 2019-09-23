@@ -188,5 +188,11 @@ export default {
         color: #012c4d;
       }
     }
+    .button-circle {
+      position: relative;
+      top: 70px;
+      bottom: 0;
+      z-index: 0;
+    }
   }
 </style>
