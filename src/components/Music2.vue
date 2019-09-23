@@ -74,6 +74,7 @@ export default {
   bottom: 2.5rem;
   right: 3rem;
   z-index: 9;
+  opacity: 0;
 }
 .isOn {
   width: 28px;

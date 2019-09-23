@@ -70,7 +70,6 @@ export default new Router({
       },
       {
         path: 'result/:name',
-        redirect: 'result/parrot',
         name: 'result',
         component: () =>
           import(/* webpackChunkName: "result" */ './views/Result.vue')

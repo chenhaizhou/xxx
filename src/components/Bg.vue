@@ -1,6 +1,7 @@
 <template>
   <ul class="bg">
     <li v-if="current === 'parrot'">
+      <div class="plume" v-if="step > 1"></div>
       <div class="parrot on" v-if="step > 6"></div>
     </li>
     <li v-if="current === 'monkey'">
@@ -48,6 +49,17 @@ export default {
       height: 100%;
       width: 100%;
     }
+  }
+  .plume {
+    position: fixed;
+    bottom: 15vh;
+    right: 15vw;
+    z-index: 1;
+    width: 95px;
+    height: 53px;
+    background-size: contain;
+    background-image: url(../assets/images/img/plume.png);
+    background-repeat: no-repeat;
   }
   .parrot {
     position: fixed;

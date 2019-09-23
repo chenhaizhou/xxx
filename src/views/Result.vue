@@ -16,7 +16,7 @@
       <ResultBox :result="success" :name="name" :submitStatus="submitStatus" />
       <div class="button-circle" v-if="success && !isLast" @click="handleShowForm">填写地址</div>
       <div class="button-group" v-if="isLast">
-        <router-link to="/main/question/step1/parrot">
+        <router-link to="/">
           <div class="button-circle">再玩一次</div>
         </router-link>
         <div class="button-circle" @click="handleMask">{{shareText}}</div>

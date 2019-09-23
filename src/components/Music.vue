@@ -55,10 +55,10 @@ export default {
       const oAudio2 = document.querySelector('#sence')
       if (this.isOff) {
         oAudio.play()
-        oAudio2.play()
+        oAudio2 && oAudio2.play()
       } else {
         oAudio.pause()
-        oAudio2.pause()
+        oAudio2 && oAudio2.pause()
       }
       this.isOff = !this.isOff
     },
