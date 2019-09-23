@@ -1,32 +1,53 @@
 <template>
-  <div class="card-wrapper re-item" v-bind:class="{on}" @click="handleClick">
-    <div class="card re-item-front">
-      <div class="totem" v-html="animals[name].svg"></div>
-    </div>
-    <div class="re-item-back">
-      <div class="content">
-        <article class="bg-box" ref="imageWrapper">
-          <img class="real_pic" :src="dataURL" />
-          <header>
-            <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
-          </header>
-          <div class="img">
-            <img :src="animals[name].img" :alt="animals[name].name" />
-          </div>
-          <p class="describe" v-html="animals[name].describe"></p>
-          <footer>
-            <router-link :to="'/main/result/' + name" class="button-chest">
-              点击打开宝箱
-            </router-link>
-            <div class="qr-code">
-              <img src="../assets/images/qr.jpg" alt="qr code" />
-            </div>
-          </footer>
-        </article>
-        <transition name="fade">
-          <p class="tips" v-if="dataURL">长按图片保存</p>
-        </transition>
+  <div class="full">
+    <div class="card-wrapper re-item" v-bind:class="{on}" @click="handleClick">
+      <div class="card re-item-front">
+        <div class="totem" v-html="animals[name].svg"></div>
       </div>
+      <div class="re-item-back">
+        <div class="content">
+          <article class="bg-box">
+            <img class="real_pic" :src="dataURL" />
+            <header>
+              <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
+            </header>
+            <div class="img">
+              <img :src="animals[name].img" :alt="animals[name].name" />
+            </div>
+            <p class="describe" v-html="animals[name].describe"></p>
+            <footer>
+              <router-link :to="'/main/result/' + name" class="button-chest">
+                点击打开宝箱
+              </router-link>
+              <div class="qr-code">
+                <img src="../assets/images/qr.jpg" alt="qr code" />
+              </div>
+            </footer>
+          </article>
+          <transition name="fade">
+            <p class="tips" v-if="dataURL">长按图片保存</p>
+          </transition>
+        </div>
+      </div>
+    </div>
+    <div :style="{position: 'fixed', top: '-3000px', left: '0', width: '310px', height: '421px'}">
+      <article class="bg-box" ref="imageWrapper">
+        <header>
+          <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
+        </header>
+        <div class="img">
+          <img :src="animals[name].img" :alt="animals[name].name" />
+        </div>
+        <p class="describe" v-html="animals[name].describe"></p>
+        <footer>
+          <router-link :to="'/main/result/' + name" class="button-chest">
+            点击打开宝箱
+          </router-link>
+          <div class="qr-code">
+            <img src="../assets/images/qr.jpg" alt="qr code" />
+          </div>
+        </footer>
+      </article>
     </div>
   </div>
 </template>
@@ -113,6 +134,9 @@ export default {
 }
 </script>
 <style lang="scss">
+  .full {
+    height: 100%;
+  }
   .card-wrapper {
     position: relative;
     width: 86px;
