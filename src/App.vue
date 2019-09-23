@@ -4,6 +4,91 @@
     <router-view/>
   </div>
 </template>
+<script>
+import axios from 'axios'
+import logo from './assets/images/share_logo.jpg'
+export default {
+  mounted() {
+    
+    const thisUrl = window.location.href
+    axios.get(`http://h5.kepuchina.cn/wx/getWxToken?url=${thisUrl}`,).then((res) => {
+      if (res.status === 200 && res.data && wx) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: res.data.data.appId, // 必填，公众号的唯一标识
+            timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳
+            nonceStr: res.data.data.noncestr, // 必填，生成签名的随机串
+            signature: res.data.data.signature, // 必填，签名
+            jsApiList: [
+            "onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareQZone"
+            ] // 必填，需要使用的JS接口列表
+        })
+        console.log('++', res.data)
+        // 自定义文案及图片
+        const title = '世界动物日：心动 WE 来•找朋友'
+        const link = thisUrl
+        const imgUrl = logo
+        const desc = '快来点亮动物图腾获得神秘福袋大礼包'
+        
+        wx.ready(function () {
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+            wx.onMenuShareQZone({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+        })
+      }
+    }).catch((error) => {
+        // alert('SIGN_WECHAT_JS_SDK is error')
+        // commit(SHOW_ERROR_TOAST, error)
+    })
+  }
+}
+</script>
 
 <style lang="scss">
   html {
