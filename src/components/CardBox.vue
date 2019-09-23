@@ -259,6 +259,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    height: 360px;
     opacity: 0;
     z-index: 2;
   }

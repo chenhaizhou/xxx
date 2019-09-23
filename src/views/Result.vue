@@ -26,6 +26,7 @@
       <p>
         请填写您的相关信息<br />工作人员会与您取得联系并邮寄奖品
       </p>
+      <div v-if="error" class="error">* 所有信息都必须填写！</div>
       <ul>
         <li>
           <input type="text" name="username" v-model="formObj.username" placeholder="| 姓名" />
@@ -44,6 +45,14 @@
 <script>
 import axios from 'axios'
 import ResultBox from '@/components/ResultBox'
+const isValid = obj => {
+  for(let key  in obj){
+    if(obj.hasOwnProperty(key)) {
+      return obj[key] && obj[key] !== ''
+    }
+  }
+  return true
+}
 export default {
   data () {
     return {
@@ -52,6 +61,8 @@ export default {
       showMask: false,
       submitStatus: false,
       showForm: false,
+      error: false,
+      token: '',
       formObj: {
         username: '',
         phone: '',
@@ -71,16 +82,35 @@ export default {
     },
     submitForm (event) {
       event.preventDefault()
-      this.showForm = false // remove this line when enable axios
-      this.submitStatus = true // remove this line when enable axios
-      /*
-      axios.post('/api', this.formObj).then(res => {
-        this.showForm = false
-        this.submitStatus = true
+      const data = {
+        code: this.token,
+        address: this.formObj.address,
+        mobile: this.formObj.phone,
+        name: this.formObj.username
+      }
+      
+      if(isValid(data)) {
+        this.error = false
+        axios.post('https://h5.kepuchina.cn/animalActivity/ajaxExchangeAward', data).then(res => {
+          if (res.data.data.code === 0) {
+            this.showForm = false
+            this.submitStatus = true
+          }
+        }).catch(err => {
+          console.error('Error:', err)
+        })
+      } else {
+        this.error = true
+      }
+    },
+    requestResult () {
+      axios.get('https://h5-yufa.kepuchina.cn/animalActivity/ajaxGetAward/').then(res => {
+        const {code, data} = res.data;
+        this.success = data.code !== ''
+        this.token = data.code;
       }).catch(err => {
         console.error('Error:', err)
       })
-      */
     }
   },
   computed: {
@@ -92,6 +122,7 @@ export default {
     }
   },
   mounted () {
+    this.requestResult()
   }
 }
 </script>
@@ -194,5 +225,10 @@ export default {
       bottom: 0;
       z-index: 0;
     }
+  }
+  .error {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #e00;
   }
 </style>
