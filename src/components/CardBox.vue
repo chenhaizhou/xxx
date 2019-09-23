@@ -87,7 +87,8 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    handleClick (event) {
+      event.preventDefault()
       if(!this.count){
         axios.post(`${host}/wx/auth/`).then(res => {
           this.on = true
@@ -101,7 +102,7 @@ export default {
     handleImage () {
       html2canvas(this.$refs.imageWrapper,{
           backgroundColor: '#878BA3',
-          width: 300,
+          width: 310,
           height: 421
       }).then((canvas) => {
           let dataURL = canvas.toDataURL("image/png");

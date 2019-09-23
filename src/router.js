@@ -73,6 +73,10 @@ export default new Router({
         name: 'result',
         component: () =>
           import(/* webpackChunkName: "result" */ './views/Result.vue')
+      },
+      {
+        path: '*',
+        redirect: '{name: home}'
       }
     ]
   }
