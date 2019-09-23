@@ -25,7 +25,7 @@ export default {
         })
         // 自定义文案及图片
         const title = share.title
-        const link = thisUrl
+        const link = share.url
         const imgUrl = 'https://h5.kepuchina.cn/html/20190923/' + logo
         const desc = share.desc
         wx.ready(function () {
