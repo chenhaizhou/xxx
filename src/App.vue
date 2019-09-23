@@ -6,12 +6,13 @@
 </template>
 <script>
 import axios from 'axios'
+import { host, share } from '@/config/config'
 import logo from './assets/images/share_logo.jpg'
 export default {
   mounted() {
     
     const thisUrl = window.location.href
-    axios.get(`http://h5.kepuchina.cn/wx/getWxToken?url=${thisUrl}`,).then((res) => {
+    axios.get(`${host}/wx/getWxToken?url=${thisUrl}`,).then((res) => {
       if (res.status === 200 && res.data && wx) {
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -23,18 +24,16 @@ export default {
             "onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareQZone"
             ] // 必填，需要使用的JS接口列表
         })
-        console.log('++', res.data)
         // 自定义文案及图片
-        const title = '世界动物日：心动 WE 来•找朋友'
+        const title = share.title
         const link = thisUrl
         const imgUrl = logo
-        const desc = '快来点亮动物图腾获得神秘福袋大礼包'
-        
+        const desc = share.desc
         wx.ready(function () {
             wx.onMenuShareTimeline({
                 title: title, // 分享标题
                 link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: imgUrl, // 分享图标
+                imgUrl: host + imgUrl, // 分享图标
                 success: function () {
                     // 用户确认分享后执行的回调函数
                 },

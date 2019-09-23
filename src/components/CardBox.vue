@@ -39,6 +39,7 @@ import {
   leopard
 } from '@/components/animals'
 import { p1, p2, p3, p4, p5 } from '@/components/imageList'
+import { host } from '@/config/config'
 export default {
   props: {
     name: String
@@ -86,7 +87,7 @@ export default {
   methods: {
     handleClick () {
       if(!this.count){
-        axios.post('https://h5.kepuchina.cn/wx/auth/').then(res => {
+        axios.post(`${host}/wx/auth/`).then(res => {
           this.on = true
           this.count = res.data.data.num
           setTimeout(() => this.handleImage(), 500)

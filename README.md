@@ -26,11 +26,15 @@ yarn run lint
 ```
 
 ## Request API
-1. User Card
+1. HOST
+
+  config/config.js
+
+2. User Card
 
    ./src/components/CardBox.vue
 
 
-2. Submit Form
+3. Submit Form
 
    ./src/components/Result.vue

@@ -22,6 +22,7 @@ import p3q2 from '../assets/images/question/p3_2.png'
 import p4q2 from '../assets/images/question/p4_2.png'
 import p5q2 from '../assets/images/question/p5_2.png'
 import cage from '../assets/images/img/cage.png'
+import cage2 from '../assets/images/img/cage2.png'
 import chainsaw from '../assets/images/img/chainsaw.png'
 import falcon from '../assets/images/img/falcon.png'
 import food from '../assets/images/img/food.png'
@@ -82,6 +83,7 @@ export default [
   p4q2,
   p5q2,
   cage,
+  cage2,
   chainsaw,
   falcon,
   food,

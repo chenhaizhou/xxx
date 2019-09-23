@@ -44,6 +44,7 @@
 </template>
 <script>
 import axios from 'axios'
+import { host } from '@/config/config'
 import ResultBox from '@/components/ResultBox'
 const isValid = obj => {
   for(let key  in obj){
@@ -91,7 +92,7 @@ export default {
       
       if(isValid(data)) {
         this.error = false
-        axios.post('https://h5.kepuchina.cn/animalActivity/ajaxExchangeAward', data).then(res => {
+        axios.post(`${host}/animalActivity/ajaxExchangeAward`, data).then(res => {
           if (res.data.data.code === 0) {
             this.showForm = false
             this.submitStatus = true
@@ -104,7 +105,7 @@ export default {
       }
     },
     requestResult () {
-      axios.get('https://h5-yufa.kepuchina.cn/animalActivity/ajaxGetAward/').then(res => {
+      axios.get(`${host}/animalActivity/ajaxGetAward/`).then(res => {
         const {code, data} = res.data;
         this.success = data.code !== ''
         this.token = data.code;

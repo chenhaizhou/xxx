@@ -45,6 +45,7 @@ export default {
     margin: 0;
     padding: 0;
     display: flex;
+    max-width: 380px;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;

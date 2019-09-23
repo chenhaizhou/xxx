@@ -1,4 +1,11 @@
 const steps = ['parrot', 'monkey', 'falcon', 'panda', 'leopard']
+const host = 'https://h5.kepuchina.cn'
+const share = {
+  title: '世界动物日：心动 WE 来•找朋友',
+  desc: '快来点亮动物图腾，获得神秘福袋大礼包！'
+}
 export {
-  steps
+  steps,
+  host,
+  share
 }

@@ -7,10 +7,10 @@
     <li v-if="current === 'monkey'">
       <div class="food" v-if="step <= 5"></div>
       <div class="monkey" v-if="step > 5"></div>
-      <div class="chainsaw" v-if="step > 2 && step < 6"></div>
+      <div class="chainsaw" v-if="step > 3 && step < 6"></div>
     </li>
     <li v-if="current === 'falcon'">
-      <div class="cage" :class="{shake: step === 3}"></div>
+      <div class="cage" :class="{shake: step >= 3 && step < 6}"></div>
       <div class="mouse" v-if="step <= 2"></div>
       <div class="falcon" v-if="step <= 2"></div>
       <div class="falcon falcon2" v-if="step > 5"></div>
@@ -119,6 +119,7 @@ export default {
     background: url(../assets/images/img/cage.png) center center no-repeat;
     background-size: contain;
     &.shake {
+      background-image: url(../assets/images/img/cage2.png);
       animation: shake 1s ease-in-out 2s infinite;
     }
   }
