@@ -5,7 +5,7 @@
         <div class="content" ref="content" id="scroll">
           <h3>活动说明</h3>
           <strong>找呀找呀找朋友，找到一个好朋友~</strong>
-          <p>2019年10月4日第88个世界动物日，科普中国网与世界动物保护协会、大自然保护协会、成都大熊猫基地、国际爱护动物基金会、保护国际基金会共同发起“心动WE来•找朋友”主题活动。</p>
+          <p>2019年10月4日第88个世界动物日，科普中国网与世界动物保护协会、大自然保护协会、成都大熊猫繁育研究基地、国际爱护动物基金会、保护国际基金会共同发起“心动WE来•找朋友”主题活动。</p>
           <h3>活动时间</h3>
           <p>活动时间：9月24日-10月8日</p>
           <h3>活动规则：</h3>
@@ -14,7 +14,7 @@
           <ul class="logos">
             <li><img src="../assets/images/logo/sjdwxh.png" alt="世界动物协会" /></li>
             <li><img src="../assets/images/logo/dzrxh.png" alt="大自然保护协会" /></li>
-            <li><img src="../assets/images/logo/dxmjd.png" alt="成都大熊猫基地" /></li>
+            <li><img src="../assets/images/logo/dxmjd.png" alt="成都大熊猫繁育研究基地" /></li>
             <li><img src="../assets/images/logo/bhgjjjh.png" alt="保护国际基金会" /></li>
           </ul>
           <p class="disclaimer">本次活动解释权归主办方所有</p>
@@ -103,7 +103,7 @@ export default {
    margin: 0;
    padding: 1.5rem;
    list-style: none;
-   grid-gap: 1.5rem;
+   grid-gap: 3rem;
    img {
      max-width: 100%;
    }

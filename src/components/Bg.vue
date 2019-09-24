@@ -90,8 +90,8 @@ export default {
     position: absolute;
     left: 50%;
     bottom: 12%;
-    width: 83px;
-    height: 59px;
+    width: 93px;
+    height: 69px;
     transform: translateX(-50%);
     z-index: 0;
     background: url(../assets/images/img/food.png) center center no-repeat;
