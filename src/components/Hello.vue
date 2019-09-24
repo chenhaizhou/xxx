@@ -2,7 +2,7 @@
   <main>
     <article class="hello">
       <section class="content-box">
-        <div class="content">
+        <div class="content" ref="content" id="scroll">
           <h3>活动说明</h3>
           <strong>找呀找呀找朋友，找到一个好朋友~</strong>
           <p>2019年10月4日第88个世界动物日，科普中国网与世界动物保护协会、大自然保护协会、成都大熊猫基地、国际爱护动物基金会、保护国际基金会共同发起“心动WE来•找朋友”主题活动。</p>
@@ -35,6 +35,11 @@ export default {
   },
   components: {
     Copyright
+  },
+  mounted () {
+    this.$refs.content.addEventListener('touchmove',function(e){
+        e.isSCROLL = true;
+    })
   }
 }
 </script>

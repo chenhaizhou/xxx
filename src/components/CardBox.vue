@@ -305,9 +305,11 @@ export default {
     background-repeat: no-repeat;
     .content {
       position: static;
-      margin: 10vh auto;
+      margin: 0 auto;
       width: 80vw;
-      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     footer {
       width: 80%;

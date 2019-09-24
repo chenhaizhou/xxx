@@ -9,7 +9,10 @@
       </p>
     </div>
     <router-link :to="{path: '../step6/' + current}"><div class="parrot" v-if="current === 'parrot'"></div></router-link>
-    <router-link :to="{path: '../step6/' + current}"><NextButton :full="false" :tips="true" :position="tipPosition[current]" /></router-link>
+    <router-link :to="{path: '../step6/' + current}">
+      <NextButton v-if="current !== 'panda'" :full="false" :tips="true" :position="tipPosition[current]" />
+      <NextButton v-else :full="true" />
+    </router-link>
   </div>
 </template>
 <script>
