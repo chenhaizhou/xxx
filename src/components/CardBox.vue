@@ -306,7 +306,7 @@ export default {
     .content {
       position: static;
       margin: 0 auto;
-      width: 80vw;
+      width: 80%;
       display: flex;
       align-items: center;
       justify-content: center;
