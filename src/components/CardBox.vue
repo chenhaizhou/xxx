@@ -30,24 +30,26 @@
         </div>
       </div>
     </div>
-    <div :style="{position: 'fixed', top: '-3000px', left: '0', width: '310px', height: '421px'}">
-      <article class="bg-box" ref="imageWrapper">
-        <header>
-          <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
-        </header>
-        <div class="img">
-          <img :src="animals[name].img" :alt="animals[name].name" />
-        </div>
-        <p class="describe" v-html="animals[name].describe"></p>
-        <footer>
-          <router-link :to="'/main/result/' + name" class="button-chest">
-            点击打开宝箱
-          </router-link>
-          <div class="qr-code">
-            <img src="../assets/images/qr.jpg" alt="qr code" />
+    <div class="replica" ref="imageWrapper" :style="{position: 'fixed', top: '-3000px', left: '0', 'z-index': 0, width: '414px', height: '736px'}">
+      <div class="content">
+        <article class="bg-box">
+          <header>
+            <p>我是第 {{count}} 位守护{{animals[name].name}}的人</p>
+          </header>
+          <div class="img">
+            <img :src="animals[name].img" :alt="animals[name].name" />
           </div>
-        </footer>
-      </article>
+          <p class="describe" v-html="animals[name].describe"></p>
+          <footer>
+            <div class="logo">
+              <img src="../assets/images/logo.png" alt="科普中国">
+            </div>
+            <div class="qr-code">
+              <img src="../assets/images/qr.jpg" alt="qr code" />
+            </div>
+          </footer>
+        </article>
+      </div>
     </div>
   </div>
 </template>
@@ -123,8 +125,8 @@ export default {
     handleImage () {
       html2canvas(this.$refs.imageWrapper,{
           backgroundColor: '#878BA3',
-          width: 310,
-          height: 421
+          width: 414,
+          height: 736
       }).then((canvas) => {
           let dataURL = canvas.toDataURL("image/png");
           this.dataURL = dataURL;
@@ -195,6 +197,7 @@ export default {
   }
   .bg-box {
     background-color: rgba(255, 255, 255, .5);
+    border-radius: 8px;
   }
   .on {
     position: fixed;
@@ -248,12 +251,11 @@ export default {
   }
   .img {
     margin: 0 auto;
-    width: 245px;
-    height: 195px;
+    width: 80%;
     border: 5px solid #fff;
     img {
-      max-width: 100%;
-      max-height: 100%;
+      display: block;
+      width: 100%;
     }
   }
   .describe {
@@ -296,5 +298,27 @@ export default {
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
+  }
+  .replica {
+    background-image: url(../assets/images/bg/bg7.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    .content {
+      position: static;
+      margin: 10vh auto;
+      width: 80vw;
+      height: 80vh;
+    }
+    footer {
+      width: 80%;
+      margin: 2rem auto 1.5rem;
+    }
+    .logo {
+      flex: 1;
+      img {
+        margin-top: 15px;
+        max-width: 70%;
+      }
+    }
   }
 </style>
