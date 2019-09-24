@@ -36,18 +36,20 @@ export default {
       describe: describes[this.$route.params.name],
       tipPosition: {
         monkey: {
-          top: '78%'
+          top: '78%',
+          left: '42%'
         },
         falcon: {
-          top: '45%',
-          left: '30%'
+          top: '42%',
+          left: '22%'
         },
         panda: {
           top: '60%',
-          left: '75%'
+          left: '70%'
         },
         leopard: {
-          top: '55%'
+          top: '55%',
+          left: '45%'
         }
       }
     }

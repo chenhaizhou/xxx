@@ -1,7 +1,7 @@
 <template>
   <ul class="bg">
     <li v-if="current === 'parrot'">
-      <div class="plume" v-if="step > 1"></div>
+      <div class="plume"></div>
       <div class="parrot on" v-if="step > 6"></div>
     </li>
     <li v-if="current === 'monkey'">
@@ -203,7 +203,7 @@ export default {
     20%, 40%, 60%, 80% {transform: translateX(-49%);}
   }
   div.fade-enter-active, .fade-leave-active {
-    transition: opacity 2s;
+    transition: opacity 1s;
     opacity: 1;
   }
   .fade-enter, .fade-leave-to {

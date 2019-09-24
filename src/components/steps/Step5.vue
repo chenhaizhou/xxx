@@ -9,7 +9,7 @@
       </p>
     </div>
     <router-link :to="{path: '../step6/' + current}"><div class="parrot" v-if="current === 'parrot'"></div></router-link>
-    <router-link :to="{path: '../step6/' + current}"><NextButton :tips="true" :position="tipPosition[current]" /></router-link>
+    <router-link :to="{path: '../step6/' + current}"><NextButton :full="false" :tips="true" :position="tipPosition[current]" /></router-link>
   </div>
 </template>
 <script>
@@ -32,15 +32,24 @@ export default {
       tipPosition: {
         parrot: {
           left: 'auto',
-          right: '30%',
-          top: '50%'
+          right: '60px',
+          top: '45%'
         },
         monkey: {
           top: '45%',
           left: '40%'
         },
         falcon: {
-          top: '75%'
+          top: '75%',
+          right: '40%'
+        },
+        panda: {
+          top: '60%',
+          left: '25%'
+        },
+        leopard: {
+          top: '60%',
+          left: '40%'
         }
       }
     }

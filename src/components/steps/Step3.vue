@@ -8,7 +8,7 @@
         <i class="arrow"></i>
       </p>
     </div>
-    <router-link :to="{path: '../step4/' + current}"><NextButton /></router-link>
+    <router-link :to="{path: '../step4/' + current}"><NextButton :full="true" /></router-link>
     <div v-bind:style="{pointerEvents: 'none', opacity: 0}">
       <Music id="scene" :name="current" :autoPlay="true" />
     </div>

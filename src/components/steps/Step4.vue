@@ -11,7 +11,7 @@
     <transition name="fade">
       <div class="parrot" v-if="showImage && current === 'parrot'"></div>
     </transition>
-    <router-link :to="{path: '../step5/' + current}"><NextButton /></router-link>
+    <router-link :to="{path: '../step5/' + current}"><NextButton :full="true" /></router-link>
   </div>
 </template>
 <script>

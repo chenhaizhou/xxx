@@ -43,11 +43,13 @@ export default {
     align-items: center;
     align-content: center;
     justify-content: center;
+    overflow: hidden;
     &::before {
       content: '';
       position: absolute;
-      width: 100%;
+      right: 0;
       height: 100%;
+      bottom: 0;
       top: 0;
       left: 0;
       z-index: -1;

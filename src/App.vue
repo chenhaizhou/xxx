@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ref="dom">
     <div style="width:0;height:0;overflow:hidden;"><img src='./assets/images/share_logo.jpg' /></div>
     <router-view/>
   </div>
@@ -84,6 +84,10 @@ export default {
         // alert('SIGN_WECHAT_JS_SDK is error')
         // commit(SHOW_ERROR_TOAST, error)
     })
+
+    document.body.addEventListener('touchmove', function (e) {
+        e.preventDefault() // 阻止默认的处理方式(阻止下拉滑动的效果)
+    }, {passive: false}) // passive 参数不能省略，用来兼容ios和android
   }
 }
 </script>
@@ -96,21 +100,37 @@ export default {
     margin: 0;
     padding: 0;
   }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
   ol, ul {
     list-style: none;
   }
   #app {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
+    -webkit-overflow-scrolling: touch;
   }
   main, .wrapper {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
   h1, h2, h3, h4 ,h5, h6 {
     font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;

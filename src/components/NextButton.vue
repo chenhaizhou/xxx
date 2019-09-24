@@ -1,7 +1,6 @@
 <template>
-  <div class="point" v-bind:class="{full: name !== 'parrot'}">
-    <RippleIcon v-if="tips" :style="position" />
-    <div class="tips-button">下一页</div>
+  <div class="point" v-bind:class="{full}" :style="full ? null : position">
+    <RippleIcon v-if="tips" :style="full ? position : null" />
   </div>
 </template>
 <script>
@@ -10,7 +9,8 @@ export default {
   props: {
     tips: Boolean,
     name: String,
-    position: Object
+    position: Object,
+    full: Boolean
   },
   components: {
     RippleIcon

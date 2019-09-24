@@ -41,6 +41,7 @@ export default {
     list-style: none;
     counter-increment: my;
     color: #69503C;
+    width: 123px;
     .button::before{
       content: counter(my,upper-latin);
       position: absolute;

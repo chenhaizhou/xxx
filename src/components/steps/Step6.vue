@@ -11,7 +11,7 @@
     <transition name="fade" v-on:after-enter="afterEnter">
       <div class="parrot" v-if="show && current === 'parrot'" v-bind:class="{on: on}"></div>
     </transition>
-    <router-link :to="{path: '../step7/' + current}"><NextButton /></router-link>
+    <router-link :to="{path: '../step7/' + current}"><NextButton :full="true" /></router-link>
   </div>
 </template>
 <script>
