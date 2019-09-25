@@ -32,8 +32,11 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 3rem;
+    overflow: hidden;
   }
   li {
+    float: left;
+    margin: 5px 0;
     position: relative;
     z-index: 0;
     font-family: "FZZHengHei-B-GBK", Arial, Helvetica, sans-serif;

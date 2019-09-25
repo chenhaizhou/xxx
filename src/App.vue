@@ -84,12 +84,13 @@ export default {
         // alert('SIGN_WECHAT_JS_SDK is error')
         // commit(SHOW_ERROR_TOAST, error)
     })
-
+/*
     document.body.addEventListener('touchmove', function (e) {
         if(!e.isSCROLL){
             e.preventDefault(); //阻止默认事件(上下滑动)
         }
     }, {passive: false}) // passive 参数不能省略，用来兼容ios和android
+    */
   }
 }
 </script>

@@ -96,10 +96,12 @@ export default {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1.5rem;
     z-index: 1;
+    overflow: hidden;
   }
   li {
     height: 3rem;
     text-align: center;
+    float: left;
     &.active {
       svg {
         g {

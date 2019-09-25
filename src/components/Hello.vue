@@ -77,12 +77,15 @@ export default {
      margin-top: 1.5rem;
    }
  }
+ .content-box {
+   overflow: scroll;
+ }
  .content {
    box-sizing: border-box;
    height: 100%;
    padding: 1rem;
    font-size: 1.6rem;
-   overflow: auto;
+   overflow: scroll;
    text-align: left;
    color: #46433F;
    p {
@@ -104,8 +107,22 @@ export default {
    padding: 1.5rem;
    list-style: none;
    grid-gap: 3rem;
+   overflow: hidden;
+   li {
+     float: left;
+     height: 60px;
+     margin: 10px 0;
+     &:nth-child(2n - 1) {
+       width: 30%;
+     }
+     &:nth-child(2n) {
+       width: 60%;
+       margin-left: 10%;
+     }
+   }
    img {
      max-width: 100%;
+     max-height: 100%;
    }
  }
  .button {

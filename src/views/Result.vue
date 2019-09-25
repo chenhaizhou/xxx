@@ -24,7 +24,7 @@
       <p>
         请填写您的相关信息<br />工作人员会与您取得联系并邮寄奖品
       </p>
-      <div v-if="error" class="error">* 所有信息都必须正确填写！</div>
+      <div v-if="error" class="error">{{errorMsg}}</div>
       <ul>
         <li>
           <input type="text" name="username" v-model="formObj.username" placeholder="| 姓名" />
@@ -36,6 +36,7 @@
           <input type="text" name="address" v-model="formObj.address" placeholder="| 地址" />
         </li>
       </ul>
+      <div class="submit-button" @click="submitForm($event)"></div>
       <div class="button-circle" @click="submitForm($event)">确定提交</div>
     </div>
   </div>
@@ -62,6 +63,7 @@ export default {
       showForm: false,
       error: false,
       token: '',
+      errorMsg: '* 所有信息都必须正确填写！',
       formObj: {
         username: '',
         phone: '',
@@ -104,6 +106,7 @@ export default {
             this.submitStatus = true
           } else {
             this.error = true
+            this.errorMsg = res.data.msg
           }
         }).catch(err => {
           console.error('Error:', err)
@@ -150,11 +153,12 @@ export default {
     margin: 0 auto;
   }
   .button-circle {
+    position: absolute;
     font-size: 2rem;
-    bottom: 15vh;
+    bottom: 15%;
   }
   .button-group {
-    position: fixed;
+    position: absolute;
     bottom: 20%;
     left: 10%;
     right: 10%;
@@ -231,7 +235,7 @@ export default {
     .button-circle {
       position: relative;
       top: 70px;
-      bottom: 0;
+      bottom: auto;
       z-index: 0;
     }
   }
